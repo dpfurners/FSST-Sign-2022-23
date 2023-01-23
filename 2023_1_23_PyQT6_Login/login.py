@@ -6,9 +6,11 @@ from email_validator import validate_email, EmailNotValidError
 
 
 class MyInput(QLineEdit):
-    text: str = ""
-
     def __init__(self, password: bool = False, *args, **kwargs):
+        """
+        Initialize the Input Field that updates the text attribute on every change
+        and change the EchoMode to Password if the password flag is set
+        """
         super().__init__(*args, **kwargs)
         self.textChanged.connect(self.on_text_changed)
         if password:
@@ -16,12 +18,11 @@ class MyInput(QLineEdit):
 
     def on_text_changed(self, text):
         self.text = text
-        
+
 
 class MyLabel(QLabel):
-    text: str = ""
-
     def __init__(self, text: str, *args, **kwargs):
+        """Initialize the Label with a bigger Font Size"""
         super().__init__(text, *args, **kwargs)
 
         font = self.font()
@@ -31,14 +32,17 @@ class MyLabel(QLabel):
 
 class LoginPage(QMainWindow):
     def __init__(self) -> None:
+        """Initialize the Login Page"""
         super().__init__()
+        # Set the Title and the Size of the Window
         self.setWindowTitle("My Login Page")
         self.setFixedSize(400, 200)
 
+        # Initialize the Layout and the Main Widget
         self.layout = QGridLayout()
-
         self.main_widget = QWidget()
 
+        # Setup the Input Fields and the Labels
         self.name = MyInput()
         self.name_label = MyLabel("Name")
 
@@ -51,14 +55,15 @@ class LoginPage(QMainWindow):
         self.password_confirm = MyInput(True)
         self.password_confirm_label = MyLabel("Password (Repetition)")
 
+        # Setup the Buttons to Cancle or Accept the Login
         self.cancel = QPushButton("Cancel")
         self.cancel.clicked.connect(self._cancel)
 
         self.accept = QPushButton("OK")
         self.accept.clicked.connect(self._accept)
-        
+
         # Add the Widgets to the Layout with the right position in the grid layout
-        # AlignRight is a flag to align the text to the right side 
+        # AlignRight is a flag to align the text to the right side
         self.layout.addWidget(self.name_label, 0, 0, Qt.AlignmentFlag.AlignRight)
         self.layout.addWidget(self.name, 0, 1)
         self.layout.addWidget(self.mail_label, 1, 0, Qt.AlignmentFlag.AlignRight)
@@ -70,14 +75,16 @@ class LoginPage(QMainWindow):
         self.layout.addWidget(self.cancel, 4, 0)
         self.layout.addWidget(self.accept, 4, 1)
 
+        # Set the Layout to the Main Widget and set the Main Widget as the Central Widget
         self.main_widget.setLayout(self.layout)
-
         self.setCentralWidget(self.main_widget)
 
     def _cancel(self):
+        """Closes the Window and exits the Application"""
         self.close()
 
     def _accept(self):
+        """Checks if the Passwords match and if the Mail is a valid Address"""
         if self.password.text != self.password_confirm.text:
             wrong_password = QMessageBox()
             wrong_password.setText("Passwords doesn't match")
@@ -85,6 +92,7 @@ class LoginPage(QMainWindow):
             wrong_password.exec()
             return
 
+        # Check if the Email is a valid Address if not let the user know
         try:
             validate_email(self.mail.text)
         except EmailNotValidError:
@@ -94,6 +102,7 @@ class LoginPage(QMainWindow):
             mail_invalid.exec()
             return
 
+        # Tell the user that the login was successful
         done = QMessageBox()
         done.setText("Login Sucessfull \nName: {} \nMail: {}".format(self.name.text, self.mail.text))
         done.setWindowTitle("Finished Login")
