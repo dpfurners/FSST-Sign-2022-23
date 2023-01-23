@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "fsst-stack-heap"
+version = "0.1.0"
+description = "Stack and Heap examples in Python/C"
+authors = ["dpfurners <dpfurner@tsn.at>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "fsst_stack_heap"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
