@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "fsst-pyqt6-login"
+version = "0.1.0"
+description = "Simple Login Screen with PyQt6"
+authors = ["dpfurners <dpfurner@tsn.at>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "fsst_pyqt6_login"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
