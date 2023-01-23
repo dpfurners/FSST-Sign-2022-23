@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "fsst-managing"
+version = "1.0"
+description = "A Friend of mine did the Managing (Telling me what to do) and i wrote the code"
+authors = ["dpfurners <dpfurner@tsn.at>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "fsst_managing"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
