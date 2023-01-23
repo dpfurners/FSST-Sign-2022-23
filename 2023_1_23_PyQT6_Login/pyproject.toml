@@ -9,6 +9,8 @@ packages = [{include = "fsst_pyqt6_login"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pyqt6 = "^6.4.0"
+email-validator = "^1.3.1"
 
 
 [build-system]
