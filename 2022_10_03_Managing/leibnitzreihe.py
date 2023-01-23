@@ -48,5 +48,5 @@ if __name__ == '__main__':
         if p == al_p:
             matching += 1
     print(f"The result of {iterations} Iterations of the Leibnitz-Row is done after /"
-          "{round(finish_time - start_time, 2)} Seconds. ({proc_amount} Processes were running)")
+          f"{round(finish_time - start_time, 2)} Seconds. ({proc_amount} Processes were running)")
     print(f"There are {matching}/{length} Decimals ({round(matching / length * 100, 2)}%) matching in \n{almost_pi}")
