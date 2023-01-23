@@ -24,8 +24,8 @@ if __name__ == '__main__':
             print("Please insert a valid number")
     if iterations < 4:
         iterations = 4
-    l = range(0, iterations)
-    x = [l[i::proc_amount] for i in range(0, proc_amount)]
+    leibn = range(0, iterations)
+    x = [leibn[i::proc_amount] for i in range(0, proc_amount)]
     # x = numpy.array_split(numpy.array(l), proc_amount)
     start_time = time.time()
     # x = [l[i:i + int(len(l)/proc_amount)] for i in range(0, len(l), int(len(l)/proc_amount))]
@@ -47,5 +47,6 @@ if __name__ == '__main__':
     for p, al_p in zip(str_pi[2:], str_almost_pi[2:]):
         if p == al_p:
             matching += 1
-    print(f"The result of {iterations} Iterations of the Leibnitz-Row is done after {round(finish_time - start_time, 2)} Seconds. ({proc_amount} Processes were running)")
+    print(f"The result of {iterations} Iterations of the Leibnitz-Row is done after /"
+          "{round(finish_time - start_time, 2)} Seconds. ({proc_amount} Processes were running)")
     print(f"There are {matching}/{length} Decimals ({round(matching / length * 100, 2)}%) matching in \n{almost_pi}")
