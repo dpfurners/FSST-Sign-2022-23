@@ -107,5 +107,5 @@ class LoginPage(QMainWindow):
         done.setText("Login Sucessfull \nName: {} \nMail: {}".format(self.name.text, self.mail.text))
         done.setWindowTitle("Finished Login")
         done.exec()
-        
+
         sys.exit()
