@@ -1,3 +1,4 @@
+from functools import partial
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QMenu, QFileDialog
 
@@ -41,15 +42,13 @@ class DifficultyMenu(QMenu):
             action.setIcon(QIcon("assets/check.png"))
             action.setIconVisibleInMenu(False)
             print(difficulty)
-            self.difficulties[difficulty] = {action}
-            action.triggered.connect(lambda: self.trigger(difficulty))
-            action = None
+            self.difficulties[difficulty] = action
+            action.triggered.connect(partial(self.trigger, difficulty))
 
+        print(self.difficulties)
         self.parent.difficulty = list(DIFFICULTIES)[0]
 
     def trigger(self, difficulty: str):
-        print(difficulty)
-        return
         for diff in self.difficulties:
             if diff == difficulty:
                 self.difficulties.get(diff).setIconVisibleInMenu(True)
@@ -91,6 +90,7 @@ class FileMenu(QMenu):
         with open(file_name, "r") as file:
             self.parent.difficulty = file.readline().strip()
             self.parent.tries = int(file.readline().strip())
+            self.parent.game.tries.setText("Tries: " + str(self.parent.tries))
 
     def save_game(self):
         """Save the Game to a .colc File"""
