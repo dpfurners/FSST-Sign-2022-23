@@ -39,23 +39,13 @@ class DifficultyMenu(QMenu):
             action = self.addAction(difficulty)
             action.setToolTip(f"{difficulty.capitalize()} Difficulty ({DIFFICULTIES.get(difficulty)} Colors)")
             action.setShortcut(f"Ctrl+{difficulty[0].upper()}")
-            action.setIcon(QIcon("assets/check.png"))
-            action.setIconVisibleInMenu(False)
-            print(difficulty)
             self.difficulties[difficulty] = action
             action.triggered.connect(partial(self.trigger, difficulty))
 
-        print(self.difficulties)
         self.parent.difficulty = list(DIFFICULTIES)[0]
 
     def trigger(self, difficulty: str):
-        for diff in self.difficulties:
-            if diff == difficulty:
-                self.difficulties.get(diff).setIconVisibleInMenu(True)
-                continue
-            self.difficulties.get(diff).setIconVisibleInMenu(False)
         self.parent.difficulty = difficulty
-        print(self.parent.difficulty)
         self.parent.tries = 0
         self.parent.chooser.setup_colors(self.parent.difficulty)
         self.parent.game.set_new_color()

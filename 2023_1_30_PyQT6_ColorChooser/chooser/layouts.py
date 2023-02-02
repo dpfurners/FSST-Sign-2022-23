@@ -21,9 +21,7 @@ class MyChooserLayout(QGridLayout):
         for i in reversed(range(self.count())):
             self.itemAt(i).widget().setParent(None)
 
-        print(difficulty)
         per = int(sqrt(DIFFICULTIES.get(difficulty)))
-        print(per)
         for i in range(DIFFICULTIES.get(difficulty)):
             self.colors.append(MyColor(self.generate_color(), (int(WINDOW_HIGHT/per), int(WINDOW_HIGHT/per)), self))
             self.addWidget(self.colors[-1], i // per, i % per)
