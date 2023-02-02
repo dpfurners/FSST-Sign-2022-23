@@ -14,31 +14,11 @@ class DifficultyMenu(QMenu):
 
         self.setup_difficulties()
 
-        """self.difficulties = {}
-        self.easy = self.addAction("Easy")
-        self.easy.setToolTip("Easy Difficulty (9 Colors)")
-        self.easy.setShortcut("Ctrl+E")
-        self.easy.setIcon(QIcon("../check.png"))
-        self.easy.setIconVisibleInMenu(False)
-        self.medium = self.addAction("Medium")
-        self.medium.setToolTip("Medium Difficulty (25 Colors)")
-        self.medium.setShortcut("Ctrl+M")
-        self.medium.setIcon(QIcon("../check.png"))
-        self.hard = self.addAction("Hard")
-        self.hard.setToolTip("Hard Difficulty (49 Colors)")
-        self.hard.setShortcut("Ctrl+H")
-        self.hard.setIcon(QIcon("../check.png"))
-        self.hard.setIconVisibleInMenu(False)"""
-
-        """self.easy.triggered.connect(lambda: self.easy_difficulty)
-        self.medium.triggered.connect(self.medium_difficulty)
-        self.hard.triggered.connect(self.hard_difficulty)"""
-
     def setup_difficulties(self):
-        for difficulty in DIFFICULTIES:
+        for index, difficulty in enumerate(DIFFICULTIES, start=1):
             action = self.addAction(difficulty)
             action.setToolTip(f"{difficulty.capitalize()} Difficulty ({DIFFICULTIES.get(difficulty)} Colors)")
-            action.setShortcut(f"Ctrl+{difficulty[0].upper()}")
+            action.setShortcut(f"Ctrl+{index}")
             self.difficulties[difficulty] = action
             action.triggered.connect(partial(self.trigger, difficulty))
 
@@ -56,19 +36,23 @@ class FileMenu(QMenu):
         super().__init__("File", parent)
         self.parent: "ChooserPage" = parent
 
+        # Initialize the File Dialog to get the name of the file to save/load
         self.f_dialog = QFileDialog(self.parent)
         self.f_dialog.setNameFilter("Color Chooser Save (*.colc)")
 
+        # Add the Load Action to the File Menu
         self.load = self.addAction("Load")
         self.load.setStatusTip("Load the Game")
         self.load.setShortcut("Ctrl+L")
         self.load.triggered.connect(self.load_game)
 
+        # Add the Save Action to the File Menu
         self.save = self.addAction("Save")
         self.save.setStatusTip("Save the Game")
         self.save.setShortcut("Ctrl+S")
         self.save.triggered.connect(self.save_game)
 
+        # Add the Exit Action to the File Menu
         self.exit = self.addAction("Exit")
         self.exit.setStatusTip("Exit the Application")
         self.exit.setShortcut("Ctrl+Q")

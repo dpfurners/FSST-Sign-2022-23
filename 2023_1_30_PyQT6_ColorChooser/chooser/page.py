@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import QMainWindow, QBoxLayout, QWidget
 
 from .layouts import MyChooserLayout, MyGameLayout
 from .menus import DifficultyMenu, FileMenu
-from . import WINDOW_HIGHT, WINDOW_WIDTH
+from . import WINDOW_HIGHT, WINDOW_WIDTH, DIFFICULTIES
 
 
 class ChooserPage(QMainWindow):
@@ -12,7 +12,7 @@ class ChooserPage(QMainWindow):
         """Initialize the Login Page"""
         super().__init__()
         self.tries = 0
-        self.difficulty = "medium"
+        self.difficulty = list(DIFFICULTIES)[0]
 
         # Set the Title and the Size of the Window
         self.setWindowTitle("Color Chooser")
@@ -30,18 +30,17 @@ class ChooserPage(QMainWindow):
         self.diff_menu = DifficultyMenu(self)
         self.file_menu = FileMenu(self)
 
+        # Add the Menus to the Menu Bar
         self.menu.addMenu(self.file_menu)
         self.menu.addMenu(self.diff_menu)
 
+        # Add the Layouts to the Main Layout
         self.layout.addLayout(self.chooser)
         self.layout.addLayout(self.game)
         self.main_widget = QWidget()
 
-        # self.diff_menu.trigger(self.difficulty)
+        self.chooser.setup_colors(self.difficulty)
 
         # Set the Layout to the Main Widget and set the Main Widget as the Central Widget
         self.main_widget.setLayout(self.layout)
         self.setCentralWidget(self.main_widget)
-
-    def from_saved(self):
-        self.chooser.setup_colors(self.difficulty)
