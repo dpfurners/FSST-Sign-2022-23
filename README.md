@@ -3,6 +3,21 @@
 
 ---
 
+# Projects
+
+### Project 1 (PortOfClasses)
+    A Python game to learn more about Classes and Objects.
+    A Python copy of the Game Ports of Call.
+
+[Project Information](https://github.com/dpfurners/PortsOfClasses)
+
+### Project 2 (Chess)
+    A Python copy of the Game Chess.
+
+[Project Information](https://github.com/Thomas1q/Schach)
+
+# Tasks
+
 ### Task 1 (C - Repetition)
     The first task was about repeating the basics of C programming language.
 
