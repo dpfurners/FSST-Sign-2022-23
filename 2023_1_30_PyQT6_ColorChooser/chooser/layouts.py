@@ -27,7 +27,6 @@ class MyChooserLayout(QGridLayout):
         size = (int(WINDOW_HIGHT/per), int(WINDOW_HIGHT/per))
         for i in range(DIFFICULTIES.get(difficulty)):
             self.colors.append(MyColor(self.generate_color(), size, self))
-            print(i // per, i % per)
             self.addWidget(self.colors[-1], i // per, i % per)
 
     def generate_color(self):
