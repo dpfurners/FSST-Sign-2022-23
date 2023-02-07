@@ -16,6 +16,11 @@
 
 [Project Information](https://github.com/Thomas1q/Schach)
 
+### Project 3 (Battleship)
+    Beeing the SCRUM-Master and manage the Battleship Project.
+
+[Project Information](https://github.com/dpfurners/Battleship)
+
 # Tasks
 
 ### Task 1 (C - Repetition)
