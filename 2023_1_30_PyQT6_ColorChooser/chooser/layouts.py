@@ -23,9 +23,9 @@ class MyChooserLayout(QGridLayout):
             self.itemAt(i).widget().setParent(None)
 
         # Calculate the amount of colors per row/column
-        per = int(sqrt(DIFFICULTIES.get(difficulty)))
+        per = int(DIFFICULTIES.get(difficulty))
         size = (int(WINDOW_HIGHT/per), int(WINDOW_HIGHT/per))
-        for i in range(DIFFICULTIES.get(difficulty)):
+        for i in range(DIFFICULTIES.get(difficulty) ** 2):
             self.colors.append(MyColor(self.generate_color(), size, self))
             self.addWidget(self.colors[-1], i // per, i % per)
 

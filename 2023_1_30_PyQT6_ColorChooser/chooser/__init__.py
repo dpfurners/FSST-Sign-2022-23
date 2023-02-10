@@ -1,4 +1,4 @@
-DIFFICULTIES = {"easy": 9, "medium": 25, "hard": 49, "insame": 81}
+DIFFICULTIES = {"easy": 3, "medium": 5, "hard": 7, "insane": 9, "impossible": 40}
 WINDOW_HIGHT = 400
 WINDOW_WIDTH = 800
 
