@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import QMainWindow, QBoxLayout, QWidget
 
 from .layouts import MyChooserLayout, MyGameLayout
 from .menus import DifficultyMenu, FileMenu
-from . import WINDOW_HIGHT, WINDOW_WIDTH, DIFFICULTIES
+from . import WINDOW_HEIGHT, WINDOW_WIDTH, DIFFICULTIES
 
 
 class ChooserPage(QMainWindow):
@@ -16,7 +16,7 @@ class ChooserPage(QMainWindow):
 
         # Set the Title and the Size of the Window
         self.setWindowTitle("Color Chooser")
-        self.setFixedSize(WINDOW_WIDTH, WINDOW_HIGHT)
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
 
         # Initialize the Layout and the Main Widget
         self.layout = QBoxLayout(QBoxLayout.Direction.LeftToRight)
