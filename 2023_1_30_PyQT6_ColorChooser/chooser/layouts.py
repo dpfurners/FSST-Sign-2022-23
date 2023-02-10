@@ -4,7 +4,7 @@ from math import sqrt
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QGridLayout, QBoxLayout, QMessageBox, QLabel
 
-from . import DIFFICULTIES, WINDOW_HIGHT
+from . import DIFFICULTIES, WINDOW_HEIGHT
 from .widgets import MyColor
 
 
@@ -24,7 +24,7 @@ class MyChooserLayout(QGridLayout):
 
         # Calculate the amount of colors per row/column
         per = int(DIFFICULTIES.get(difficulty))
-        size = (int(WINDOW_HIGHT/per), int(WINDOW_HIGHT/per))
+        size = (int(WINDOW_HEIGHT/per), int(WINDOW_HEIGHT/per))
         for i in range(DIFFICULTIES.get(difficulty) ** 2):
             self.colors.append(MyColor(self.generate_color(), size, self))
             self.addWidget(self.colors[-1], i // per, i % per)
