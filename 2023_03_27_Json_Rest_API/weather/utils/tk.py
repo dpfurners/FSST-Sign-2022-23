@@ -7,8 +7,15 @@ from .tabs import WeatherTab, TemperatureTab, AdditionalTab, WindTab
 
 
 def load_pre_searched_cities(file: str = "cities.wt") -> list[str]:
-    with open(file, "r") as f:
-        return f.read().splitlines()
+    try:
+        with open(file, "r") as f:
+            cities = f.read().splitlines()
+            if len(cities) > 5:
+                return cities[:5]
+            return cities
+    except FileNotFoundError:
+        return []
+
 
 
 def save_pre_searched_cities(cities: list[str], file: str = "cities.wt") -> None:
